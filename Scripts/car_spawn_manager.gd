@@ -39,8 +39,8 @@ func _ready() -> void:
 		area.area_entered.connect(_score)
 
 func _handle_game_over() -> void:
-	HitSound.play()
 	if (is_game_over): return
+	HitSound.play()
 	Camera.apply_shake()
 	is_game_over = true
 	ScoreText.text = "You've scored %s. RIGHT CLICK to go back." % str(score)
