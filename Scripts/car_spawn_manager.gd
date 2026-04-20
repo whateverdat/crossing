@@ -16,8 +16,8 @@ var spawn_elapsed : float = 0
 var level_type : int = 0
 
 var pedestrian_array : Array[PackedScene] = [
-	preload("res://Scenes/pedestrian_lr.tscn"),
-	preload("res://Scenes/pedestrian_rl.tscn"),
+	preload("res://Entities/pedestrian_lr.tscn"),
+	preload("res://Entities/pedestrian_rl.tscn"),
 ]
 
 var roundabout_cars_array : Array[PackedScene] = [
