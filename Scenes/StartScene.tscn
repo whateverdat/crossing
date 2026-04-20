@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bslwtqpxh1i6h"]
+
+[ext_resource type="Script" uid="uid://b2ushkm1prvsi" path="res://Scripts/start_scene.gd" id="1_ia2xn"]
+[ext_resource type="Texture2D" uid="uid://die3nfw2c01et" path="res://Content/Textures/roundabout.png" id="2_k8nbv"]
+[ext_resource type="Script" uid="uid://bsasg3ofocie8" path="res://Scripts/start_scene_camera.gd" id="2_u668n"]
+[ext_resource type="Texture2D" uid="uid://buv6jc21cfto5" path="res://Content/Textures/start-scene.png" id="3_k8nbv"]
+[ext_resource type="Texture2D" uid="uid://c0niq000vnvy1" path="res://Content/Textures/intersection.png" id="4_ia2xn"]
+[ext_resource type="Theme" uid="uid://llns53vc5p68" path="res://Content/Fonts/button_theme.tres" id="6_28ir6"]
+[ext_resource type="AudioStream" uid="uid://bpl8a6htsph6y" path="res://Content/Audio/Song.wav" id="7_6nqof"]
+[ext_resource type="FontFile" uid="uid://craqkisxqflxf" path="res://Content/Fonts/20210711_pizel.ttf" id="8_b8lvj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sj2jm"]
+font = ExtResource("8_b8lvj")
+font_size = 32
+
+[node name="StartScene" type="Node2D" unique_id=412950723 node_paths=PackedStringArray("camera", "btn_right", "btn_left", "game_scene_container", "song")]
+script = ExtResource("1_ia2xn")
+camera = NodePath("Camera2D")
+btn_right = NodePath("Button")
+btn_left = NodePath("Button2")
+game_scene_container = NodePath("GameSceneContainer")
+song = NodePath("Song")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1264765773]
+anchor_mode = 0
+script = ExtResource("2_u668n")
+
+[node name="Roundabout" type="Sprite2D" parent="." unique_id=1755832633]
+position = Vector2(480, 90)
+texture = ExtResource("2_k8nbv")
+
+[node name="Start" type="Sprite2D" parent="." unique_id=418319768]
+position = Vector2(160, 90)
+texture = ExtResource("3_k8nbv")
+
+[node name="Intersection" type="Sprite2D" parent="." unique_id=178916282]
+position = Vector2(-160, 90)
+texture = ExtResource("4_ia2xn")
+
+[node name="Button" type="Button" parent="." unique_id=1120896949]
+offset_top = 110.0
+offset_right = 320.0
+offset_bottom = 141.0
+theme = ExtResource("6_28ir6")
+text = "Roundabout ->"
+flat = true
+
+[node name="Button2" type="Button" parent="." unique_id=928837889]
+offset_top = 145.0
+offset_right = 320.0
+offset_bottom = 180.0
+theme = ExtResource("6_28ir6")
+text = "<- Intersection"
+flat = true
+
+[node name="GameSceneContainer" type="Node2D" parent="." unique_id=1446067756]
+
+[node name="Song" type="AudioStreamPlayer" parent="." unique_id=831783701]
+stream = ExtResource("7_6nqof")
+volume_db = -10.0
+autoplay = true
+
+[node name="Label" type="Label" parent="." unique_id=1095021288]
+offset_right = 320.0
+offset_bottom = 70.0
+text = "CROSSING"
+label_settings = SubResource("LabelSettings_sj2jm")
+horizontal_alignment = 1
+vertical_alignment = 1

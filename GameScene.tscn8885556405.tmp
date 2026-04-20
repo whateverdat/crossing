@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ddl6q3mowqoyq"]
+
+[ext_resource type="Texture2D" uid="uid://die3nfw2c01et" path="res://Content/Textures/roundabout.png" id="1_eqhe0"]
+[ext_resource type="Script" uid="uid://bt86qepe6bhbv" path="res://Scripts/car_spawn_manager.gd" id="1_haeiw"]
+
+[node name="Node2D" type="Node2D" unique_id=1245535990 node_paths=PackedStringArray("CarContainer")]
+script = ExtResource("1_haeiw")
+CarContainer = NodePath("CarContainer")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1815158181]
+anchor_mode = 0
+
+[node name="Roundabout" type="Sprite2D" parent="." unique_id=693634191]
+position = Vector2(160, 90)
+texture = ExtResource("1_eqhe0")
+
+[node name="CarContainer" type="Node2D" parent="." unique_id=170200678]

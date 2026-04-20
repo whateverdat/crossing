@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bwabs0f7c2j8f"]
+
+[ext_resource type="Script" uid="uid://dh8r1kfkjpdns" path="res://Scripts/pedestrian.gd" id="1_7nhgb"]
+[ext_resource type="Script" uid="uid://dervbnbjvsba" path="res://Scripts/pedestrian_path.gd" id="2_fcrnc"]
+[ext_resource type="Texture2D" uid="uid://d2iiruvtmbfch" path="res://Content/Textures/pedestrian.png" id="3_s4be3"]
+
+[sub_resource type="Curve2D" id="Curve2D_x6js8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 141, 254, 0, 0, 0, 0, 141, 139, 0, 0, 0, 0, 158, 124, 0, 0, 0, 0, 162, 124, 0, 0, 0, 0, 179, 139, 0, 0, 0, 0, 179, 253)
+}
+point_count = 6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x6js8"]
+size = Vector2(4, 4)
+
+[node name="Path2D2" type="Path2D" unique_id=292103609 node_paths=PackedStringArray("Hitbox", "PathFollow", "Sprite")]
+curve = SubResource("Curve2D_x6js8")
+script = ExtResource("1_7nhgb")
+Hitbox = NodePath("PathFollow2D/Pedestrian/Hitbox")
+PathFollow = NodePath("PathFollow2D")
+Sprite = NodePath("PathFollow2D/Pedestrian/AnimatedSprite2D")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="." unique_id=2116163452]
+position = Vector2(141, 254)
+rotation = -1.5707964
+rotates = false
+loop = false
+script = ExtResource("2_fcrnc")
+
+[node name="Pedestrian" type="Node2D" parent="PathFollow2D" unique_id=102199716]
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="PathFollow2D/Pedestrian" unique_id=2045787796]
+rotation = 1.5707964
+texture = ExtResource("3_s4be3")
+
+[node name="Hitbox" type="Area2D" parent="PathFollow2D/Pedestrian" unique_id=574072240]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PathFollow2D/Pedestrian/Hitbox" unique_id=1343663620]
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_x6js8")
+debug_color = Color(0, 0.6, 0.69803923, 0)

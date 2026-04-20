@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://bhswbcfwphqmx"]
+
+[ext_resource type="Script" uid="uid://bt86qepe6bhbv" path="res://Scripts/car_spawn_manager.gd" id="1_46auc"]
+[ext_resource type="Script" uid="uid://7u87ehtl0eo3" path="res://Scripts/camera_shake.gd" id="2_whi5h"]
+[ext_resource type="Texture2D" uid="uid://c0niq000vnvy1" path="res://Content/Textures/intersection.png" id="3_46auc"]
+[ext_resource type="FontFile" uid="uid://craqkisxqflxf" path="res://Content/Fonts/20210711_pizel.ttf" id="4_hqbvr"]
+[ext_resource type="AudioStream" uid="uid://yeikrsp64nh8" path="res://Content/Audio/Hit.wav" id="5_whi5h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k77ap"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k77ap"]
+font = ExtResource("4_hqbvr")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_whi5h"]
+font = ExtResource("4_hqbvr")
+font_size = 8
+
+[node name="Node2D" type="Node2D" unique_id=1245535990 node_paths=PackedStringArray("Camera", "CarContainer", "PedestrianContainer", "ScoreTriggerContainer", "ScoreText", "HitSound")]
+script = ExtResource("1_46auc")
+Camera = NodePath("Camera2D")
+CarContainer = NodePath("CarContainer")
+PedestrianContainer = NodePath("PedestrianContainer")
+ScoreTriggerContainer = NodePath("ScoreTriggerContainer")
+ScoreText = NodePath("ScoreText")
+HitSound = NodePath("Hit")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1815158181]
+anchor_mode = 0
+script = ExtResource("2_whi5h")
+
+[node name="Roundabout" type="Sprite2D" parent="." unique_id=693634191]
+position = Vector2(160, 90)
+texture = ExtResource("3_46auc")
+
+[node name="CarContainer" type="Node2D" parent="." unique_id=170200678]
+
+[node name="PedestrianContainer" type="Node2D" parent="." unique_id=1606353380]
+
+[node name="ScoreTriggerContainer" type="Node2D" parent="." unique_id=1394853773]
+
+[node name="Area2D" type="Area2D" parent="ScoreTriggerContainer" unique_id=1940692919]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreTriggerContainer/Area2D" unique_id=275582395]
+position = Vector2(338, 99)
+shape = SubResource("RectangleShape2D_k77ap")
+
+[node name="Area2D2" type="Area2D" parent="ScoreTriggerContainer" unique_id=2064923367]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreTriggerContainer/Area2D2" unique_id=1443072063]
+position = Vector2(169, -18)
+shape = SubResource("RectangleShape2D_k77ap")
+
+[node name="Area2D3" type="Area2D" parent="ScoreTriggerContainer" unique_id=639670688]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreTriggerContainer/Area2D3" unique_id=884272192]
+position = Vector2(-18, 82)
+shape = SubResource("RectangleShape2D_k77ap")
+
+[node name="Area2D4" type="Area2D" parent="ScoreTriggerContainer" unique_id=370889544]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreTriggerContainer/Area2D4" unique_id=1159800457]
+position = Vector2(151, 198)
+shape = SubResource("RectangleShape2D_k77ap")
+
+[node name="ScoreText" type="Label" parent="." unique_id=234906898]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 320.0
+offset_bottom = 180.0
+text = "0"
+label_settings = SubResource("LabelSettings_k77ap")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreText2" type="Label" parent="." unique_id=1629310335]
+offset_left = 180.0
+offset_top = 167.0
+offset_right = 320.0
+offset_bottom = 180.0
+text = "Press M to mute music."
+label_settings = SubResource("LabelSettings_whi5h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hit" type="AudioStreamPlayer" parent="." unique_id=520915384]
+stream = ExtResource("5_whi5h")
+volume_db = 10.0
